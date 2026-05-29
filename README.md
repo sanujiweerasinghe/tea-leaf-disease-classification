@@ -1,50 +1,120 @@
-# Tea Leaf Disease Classification
+# Tea Leaf Disease Classification Using Deep Learning
 
-A deep learning project for classifying tea leaf diseases using transfer learning with VGG16 and ResNet50 in PyTorch.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c?logo=pytorch)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+A deep learning project for automated classification of tea leaf diseases using transfer learning with **VGG16** and **ResNet50** pretrained on ImageNet.
+
+---
+
+## Overview
+
+Tea leaf diseases cause significant crop losses if not detected early. This project applies convolutional neural networks (CNNs) with transfer learning to classify three common tea leaf diseases from images, comparing the performance of two popular architectures.
+
+---
 
 ## Dataset
 
-- **Classes:** Brown Blight, Algal Leaf, White Spot
-- **Images:** ~100 per class
-- **Split:** 70% Train / 15% Validation / 15% Test
+| Class | Description |
+|---|---|
+| Brown Blight | Caused by *Colletotrichum camelliae* |
+| Algal Leaf | Caused by *Cephaleuros parasiticus* |
+| White Spot | Caused by *Pestalotiopsis theae* |
+
+- ~100 images per class
+- Split: **70% Train / 15% Validation / 15% Test**
+- Augmentation: horizontal flip, rotation (±15°), colour jitter
+
+---
 
 ## Models
 
-| Model    | Architecture | Pretrained | Frozen Layers      |
-|----------|-------------|------------|--------------------|
-| VGG16    | VGG-16      | ImageNet   | All feature layers |
-| ResNet50 | ResNet-50   | ImageNet   | All residual blocks|
+### VGG16 — Transfer Learning
+- Pretrained on ImageNet
+- Frozen: all convolutional feature layers
+- Trainable: final classifier head (3-class output)
+
+### ResNet50 — Transfer Learning
+- Pretrained on ImageNet
+- Frozen: all residual blocks
+- Trainable: final fully-connected layer (3-class output)
+
+---
 
 ## Results
 
-Training curves, confusion matrices, and model comparison plots are saved in the `results/` folder after running the notebook.
+| Model    | Test Accuracy | Test Loss | Precision | Recall | F1-Score |
+|----------|:------------:|:---------:|:---------:|:------:|:--------:|
+| VGG16    | —            | —         | —         | —      | —        |
+| ResNet50 | —            | —         | —         | —      | —        |
 
-## Requirements
+> Run the notebook to populate the results table with actual values.
 
-```bash
-pip install -r requirements.txt
-```
+### Training Curves
+![Training Curves](results/training_curves.png)
 
-## Usage
+### Confusion Matrices
+![Confusion Matrices](results/confusion_matrices.png)
 
-1. Place `Data_A2.zip` in the project root
-2. Open `tea_leaf_disease_classification.ipynb` in Jupyter
-3. Run all cells top to bottom
+### Model Comparison
+![Model Comparison](results/model_comparison_bar.png)
+
+---
 
 ## Project Structure
 
 ```
-├── tea_leaf_disease_classification.ipynb
-├── requirements.txt
+tea-leaf-disease-classification/
+├── tea_leaf_disease_classification.ipynb   # Main notebook
+├── requirements.txt                         # Dependencies
 ├── results/
-│   ├── sample_images.png
 │   ├── training_curves.png
 │   ├── confusion_matrices.png
 │   ├── model_comparison_bar.png
-│   └── model_comparison.csv
+│   ├── model_comparison.csv
+│   └── sample_images.png
+├── docs/
+│   └── tea_leaf_disease_classification.pdf  # Project report
 └── .gitignore
 ```
 
+---
+
+## Setup & Usage
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Add Dataset
+Place `Data_A2.zip` in the project root directory.
+
+### 3. Run the Notebook
+```bash
+jupyter notebook tea_leaf_disease_classification.ipynb
+```
+Run all cells top to bottom. The notebook will:
+- Extract and split the dataset automatically
+- Train VGG16 and ResNet50 models
+- Generate and save all plots to `results/`
+
+---
+
+## Requirements
+
+- Python 3.10+
+- PyTorch 2.0+
+- torchvision
+- scikit-learn
+- matplotlib, seaborn, pandas
+
+See `requirements.txt` for full list.
+
+---
+
 ## Assignment
 
-CSC4093/DSC4213: Deep Learning (2024/25) — Programming Assignment 02
+**CSC4093 / DSC4213: Deep Learning (2024/25)**
+Programming Assignment 02 — Convolutional Networks and Transfer Learning
