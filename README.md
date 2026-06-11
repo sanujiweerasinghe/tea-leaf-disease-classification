@@ -46,10 +46,13 @@ Tea leaf diseases cause significant crop losses if not detected early. This proj
 
 | Model    | Test Accuracy | Test Loss | Precision | Recall | F1-Score |
 |----------|:------------:|:---------:|:---------:|:------:|:--------:|
-| VGG16    | —            | —         | —         | —      | —        |
-| ResNet50 | —            | —         | —         | —      | —        |
+| VGG16    | 86.21%       | 0.420     | 0.8673    | 0.8621 | 0.8620   |
+| ResNet50 | **87.93%**   | **0.401** | 0.8788    | 0.8793 | 0.8787   |
 
-> Run the notebook to populate the results table with actual values.
+📄 **[Read the full project report](docs/REPORT.md)** for detailed methodology, training curves, and analysis.
+
+### Sample Images
+![Sample Images](results/sample_images.png)
 
 ### Training Curves
 ![Training Curves](results/training_curves.png)
@@ -70,12 +73,14 @@ tea-leaf-disease-classification/
 ├── requirements.txt                         # Dependencies
 ├── results/
 │   ├── training_curves.png
+│   ├── vgg16_training_curves.png
+│   ├── resnet50_training_curves.png
 │   ├── confusion_matrices.png
 │   ├── model_comparison_bar.png
 │   ├── model_comparison.csv
 │   └── sample_images.png
 ├── docs/
-│   └── tea_leaf_disease_classification.pdf  # Project report
+│   └── REPORT.md                            # Full project report
 └── .gitignore
 ```
 
